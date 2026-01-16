@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация | Мои Задачи</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="container md:max-w-md mx-auto px-5 pt-14 pb-16">
+      <h1 class="text-center text-2xl font-bold text-blue-600 mb-12">
+        Мои Задачи
+      </h1>
+      <h2 class="text-center text-lg mb-10">Регистрация</h2>
+      <!-- <div class="text-center font-semibold">
+        Письмо с подтверждением отправлено на почту
+      </div> -->
+      <label class="block mb-1 ml-2" for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        class="w-full h-10 rounded-lg px-4 border mb-4"
+      />
+      <label class="block mb-1 ml-2" for="password">Пароль</label>
+      <input
+        id="password"
+        type="password"
+        class="w-full h-10 rounded-lg px-4 border mb-2"
+      />
+      <label class="block mb-1 ml-2" for="confirmPassword"
+        >Повторите пароль</label
+      >
+      <input
+        id="confirmPassword"
+        type="password"
+        class="w-full h-10 rounded-lg px-4 border mb-8"
+      />
+      <button class="button button-green mx-auto mb-2">Зарегаться</button>
+      <div class="text-zinc-500 text-center">
+        Уже есть аккаунт?
+        <a href="./login.html" class="underline hover:text-blue-600">Войти</a>
+      </div>
+    </div>
+  </body>
+</html>

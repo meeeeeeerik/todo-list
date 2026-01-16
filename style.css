@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .button {
-  @apply h-10 rounded-lg w-max px-4 bg-white text-blue-600 font-medium cursor-pointer hover:opacity-70;
+  @apply h-10 rounded-lg w-max px-6 bg-white text-blue-600 font-medium cursor-pointer hover:opacity-70 block;
 }
 
 .button-green {
