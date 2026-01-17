@@ -62,3 +62,101 @@
 .bg-opacity {
   background-color: rgb(0, 0, 0, 0.3);
 }
+
+.task {
+  display: flex;
+  margin-bottom: 16px;
+}
+.task:last-child {
+  margin-bottom: 0;
+}
+
+.openTask {
+  overflow: hidden;
+  animation: openTask 0.5s ease forwards;
+}
+
+.closeTask {
+  overflow: hidden;
+  animation: closeTask 0.5s ease forwards;
+}
+
+.smoothOpen {
+  animation: smoothOpen 0.5s ease forwards;
+}
+
+.smoothClose {
+  animation: smoothClose 0.5s ease forwards;
+}
+
+.openError {
+  animation: openError 0.5s ease forwards;
+}
+
+.closeError {
+  animation: closeError 0.5s ease forwards;
+}
+
+@keyframes smoothClose {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes smoothOpen {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes closeTask {
+  0% {
+    max-height: 100px;
+    margin-bottom: 16px;
+  }
+
+  100% {
+    max-height: 0;
+    margin-bottom: 0;
+  }
+}
+
+@keyframes openTask {
+  0% {
+    max-height: 0;
+    margin-bottom: 0;
+  }
+
+  100% {
+    max-height: 100px;
+    margin-bottom: 16px;
+  }
+}
+
+@keyframes openError {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeError {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
