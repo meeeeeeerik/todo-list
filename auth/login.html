@@ -13,25 +13,32 @@
         Мои Задачи
       </h1>
       <h2 class="text-center text-lg mb-10">Вход</h2>
-      <label class="block mb-1 ml-2" for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        class="w-full h-10 rounded-lg px-4 border mb-4"
-      />
-      <label class="block mb-1 ml-2" for="password">Пароль</label>
-      <input
-        id="password"
-        type="password"
-        class="w-full h-10 rounded-lg px-4 border mb-8"
-      />
-      <button class="button button-green mx-auto mb-2">Войти</button>
-      <div class="text-zinc-500 text-center">
-        Еще нет аккаунта?
-        <a href="./registration.html" class="underline hover:text-blue-600"
-          >Зарегаться</a
-        >
-      </div>
+      <form id="loginForm">
+        <label class="block mb-1 ml-2" for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          class="w-full h-10 rounded-lg px-4 border mb-4"
+          required
+        />
+        <label class="block mb-1 ml-2" for="password">Пароль</label>
+        <input
+          required
+          id="password"
+          type="password"
+          class="w-full h-10 rounded-lg px-4 border mb-8"
+        />
+        <button id="loginButton" class="button button-green mx-auto mb-2">
+          Войти
+        </button>
+        <div class="text-zinc-500 text-center">
+          Еще нет аккаунта?
+          <a href="./registration.html" class="underline hover:text-blue-600"
+            >Зарегаться</a
+          >
+        </div>
+      </form>
     </div>
+    <script type="module" src="login.js"></script>
   </body>
 </html>
