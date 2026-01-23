@@ -1,7 +1,39 @@
-import { createTaskHTml } from "./htmlTemplates.js";
+import { createTaskHtml } from "./htmlTemplates.js";
+
+export function renderUser(user) {
+  const userContainer = document.querySelector("#userContainer");
+
+  userContainer.innerHTML = user.email;
+}
+
+export function renderTasksLoader() {
+  const tasksContainer = document.querySelector("#tasksContainer");
+
+  tasksContainer.innerHTML = `<div class="custom-loader"></div>`;
+}
+
+export function renderTasks(tasks) {
+  const tasksContainer = document.querySelector("#tasksContainer");
+
+  if (tasks.length) {
+    const tasksHtml = tasks.map((task) => createTaskHtml(task)).join("");
+
+    tasksContainer.innerHTML = tasksHtml;
+  } else {
+    tasksContainer.innerHTML = `<div class="text-zinc-500">Нет Задач</div>`;
+  }
+}
 
 export function renderNewTask(task) {
   const tasksContainer = document.querySelector("#tasksContainer");
 
-  tasksContainer.insertAdjacentHTML("beforeend", createTaskHTml(task));
+  const tasks = tasksContainer.querySelectorAll(".task");
+
+  const newTask = createTaskHtml(task, true);
+
+  if (tasks.length) {
+    tasksContainer.insertAdjacentHTML("beforeend", newTask);
+  } else {
+    tasksContainer.innerHTML = newTask;
+  }
 }

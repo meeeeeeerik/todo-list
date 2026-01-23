@@ -45,7 +45,7 @@ export function createTaskModalHtml(mode = modes.create) {
   `;
 }
 
-export function createTaskHTml(task) {
+export function createTaskHtml(task, isNew = false) {
   const classByPriority = {
     [priorities.high]: "red",
     [priorities.medium]: "yellow",
@@ -54,7 +54,7 @@ export function createTaskHTml(task) {
   };
 
   return `
-    <div class="task openTask">
+    <div class="task ${isNew ? "openTask" : ""}">
       <label class="checkboxWrapper">
         <input type="checkbox" />
         <div class="checkbox 
