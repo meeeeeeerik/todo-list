@@ -28,7 +28,8 @@ export async function createTask(taskData) {
   const { data, error } = await supabase
     .from("tasks")
     .insert(taskData)
-    .select();
+    .select()
+    .single();
 
   if (error) {
     throw Error(error?.message || "Something happened with creating task!");
