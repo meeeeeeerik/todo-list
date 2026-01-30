@@ -1,13 +1,46 @@
-import { getTask } from "../api/task.js";
-import { modes } from "./constants.js";
-import { openTaskModal } from "./taskModalHandlers.js";
+import { getTask, updateTask } from "../api/task.js";
+import { modes, statuses } from "./constants.js";
+import { renderNewArchiveTask } from "./renders.js";
+import { closeTaskModal, openTaskModal } from "./taskModalHandlers.js";
 
-export async function onTasksContainerClick(event) {
+export async function onActiveTasksContainerClick(event) {
+  const taskContainer = event.target.closest(".task");
   const taskCheckbox = event.target.closest("[data-taskCheckbox]");
   const taskContent = event.target.closest("[data-taskContent]");
 
   if (taskCheckbox && event.target.tagName !== "INPUT") {
-    console.log("task checkbox");
+    taskContainer.classList.add("disabled");
+    const taskId = taskCheckbox.dataset.taskid;
+
+    try {
+      const archiveTask = await updateTask({
+        id: taskId,
+        status: statuses.archive,
+      });
+
+      taskContainer.classList.add("closeTask");
+
+      const animationPromise = () =>
+        new Promise((res) => {
+          const onAnimationEnd = () => {
+            taskContainer.removeEventListener("animationend", onAnimationEnd);
+
+            taskContainer.remove();
+
+            res();
+          };
+
+          taskContainer.addEventListener("animationend", onAnimationEnd);
+        });
+
+      await animationPromise();
+
+      renderNewArchiveTask(archiveTask);
+    } catch (error) {
+      console.log(error);
+
+      taskContainer.classList.remove("disabled");
+    }
   }
 
   if (taskContent) {
@@ -15,19 +48,33 @@ export async function onTasksContainerClick(event) {
 
     openTaskModal(modes.edit, taskId);
 
-    const task = await getTask(taskId);
+    try {
+      const task = await getTask(taskId);
 
-    const taskModal = document.querySelector("#taskModal");
-    const taskLoader = document.querySelector("#taskLoader");
+      const taskModal = document.querySelector("#taskModal");
+      const taskLoader = document.querySelector("#taskLoader");
 
-    if (taskModal && taskLoader) {
-      const elements = taskModal.elements;
+      if (taskModal && taskLoader) {
+        const elements = taskModal.elements;
 
-      elements.title.value = task.title;
-      elements.description.value = task.description;
-      elements.priority.value = task.priority;
+        elements.title.value = task.title;
+        elements.description.value = task.description;
+        elements.priority.value = task.priority;
 
-      taskLoader.remove();
+        taskLoader.remove();
+      }
+    } catch (error) {
+      console.log(error);
+
+      closeTaskModal();
     }
+  }
+}
+
+export async function onArchiveTasksContainerClick(event) {
+  const taskCheckbox = event.target.closest("[data-taskCheckbox]");
+
+  if (taskCheckbox && event.target.tagName !== "INPUT") {
+    console.log("archive task checkbox");
   }
 }
