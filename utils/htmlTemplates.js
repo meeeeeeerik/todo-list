@@ -11,13 +11,13 @@ export function createTaskModalHtml(mode = modes.create) {
 
   return `
     <div
-        class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center" id="taskModalContainer"
+        class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center" id="task-modal-container"
       >
-        <form id="taskModal" class="w-full max-w-md bg-white p-8 rounded-lg max-h-full relative">
+        <form id="task-modal" class="w-full max-w-md bg-white p-8 rounded-lg max-h-full relative">
           ${
             mode === modes.edit
               ? `
-          <div class="absolute top-0 right-0 bottom-0 left-0 bg-white flex justify-center items-center rounded-lg" id="taskLoader">
+          <div class="absolute top-0 right-0 bottom-0 left-0 bg-white flex justify-center items-center rounded-lg" id="task-loader">
             <div class="custom-loader"></div>
           </div>
           `
@@ -46,8 +46,8 @@ export function createTaskModalHtml(mode = modes.create) {
             <option value="${priorities.empty}" selected>Без приоритета</option>
           </select>
           <div class="flex justify-between">
-            <button type="button" class="button button-gray" id="closeTaskModalButton">Отменить</button>
-            <button id="submitTaskModalFormButton" class="button button-green">${submitButtonText}</button>
+            <button type="button" class="button button-gray" id="close-task-modal-button">Отменить</button>
+            <button id="submit-task-modal-form-button" class="button button-green">${submitButtonText}</button>
           </div>
         </form>
       </div> 
@@ -63,13 +63,13 @@ export function createTaskHtml(task, isNew = false) {
   };
 
   return `
-    <div class="task ${isNew ? "openTask" : ""}" data-taskContainerId="${task.id}">
-      <label class="checkboxWrapper" data-taskid="${task.id}" data-taskCheckbox>
+    <div class="task ${isNew ? "openTask" : ""}" data-task-container-id="${task.id}">
+      <label class="checkboxWrapper" data-task-id="${task.id}" data-task-checkbox>
         <input type="checkbox" />
         <div class="checkbox 
         ${classByPriority[task.priority]}"></div>
       </label>
-      <div class="ml-2 cursor-pointer hover:opacity-70 w-3/4" data-taskid="${task.id}" data-taskContent>
+      <div class="ml-2 cursor-pointer hover:opacity-70 w-3/4" data-task-id="${task.id}" data-task-content>
         <div class="mb-1 line-clamp-1">${task.title}</div>
         <div class="text-sm text-zinc-500 line-clamp-3">
           ${task.description}
@@ -95,8 +95,8 @@ export function createArchiveTaskHtml(archiveTask, isNew = false) {
   };
 
   return `
-    <div class="task ${isNew ? "openTask" : ""}" data-archiveTaskContainerId="${archiveTask.id}">
-      <label class="checkboxWrapper" data-taskid="${archiveTask.id}" data-taskCheckbox>
+    <div class="task ${isNew ? "openTask" : ""}" data-archive-task-container-id="${archiveTask.id}">
+      <label class="checkboxWrapper" data-archive-task-id="${archiveTask.id}" data-task-checkbox>
         <input type="checkbox" checked />
         <div class="checkbox 
         ${checkboxClassByPriority[archiveTask.priority]}"></div>
@@ -108,7 +108,23 @@ export function createArchiveTaskHtml(archiveTask, isNew = false) {
         </div>
       </div>
       <div class="ml-auto flex items-center">
-        <button class="button button-red">Удалить</button>
+        <button class="button button-red" data-delete-task-button data-task-title="${archiveTask.title}">Удалить</button>
+      </div>
+    </div>
+  `;
+}
+
+export function createModalHtml({ title, submitButtonText }) {
+  return `
+    <div class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center" data-modal-container>
+      <div class="w-full max-w-md bg-white p-8 rounded-lg max-h-full">
+        <h2 class="text-lg font-bold text-center mb-6">
+          ${title}
+        </h2>
+        <div class="flex justify-between">
+          <button class="button button-gray" data-close-modal-button>Отменить</button>
+          <button class="button button-red" data-submit-modal-button>${submitButtonText}</button>
+        </div>
       </div>
     </div>
   `;
