@@ -1,4 +1,5 @@
 import { logout } from "../api/user.js";
+import { errorHandler } from "./errorHandler.js";
 import { createModalHtml } from "./htmlTemplates.js";
 import { removeElementAfterAnimationPromise } from "./utils.js";
 
@@ -43,7 +44,7 @@ export function onLogoutButtonClick() {
 
       window.location.href = "../auth/login.html";
     } catch (error) {
-      console.log("error", error);
+      errorHandler(error);
     }
   };
 

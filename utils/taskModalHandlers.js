@@ -1,5 +1,6 @@
 import { createTask, updateTask } from "../api/task.js";
 import { modes } from "./constants.js";
+import { errorHandler } from "./errorHandler.js";
 import { createTaskModalHtml } from "./htmlTemplates.js";
 import { renderNewTask, renderUpdatedTask } from "./renders.js";
 import { removeElementAfterAnimationPromise } from "./utils.js";
@@ -81,7 +82,7 @@ export function openTaskModal(mode = modes.create, taskId) {
         renderUpdatedTask(updatedTask);
       }
     } catch (error) {
-      console.log("error", error);
+      errorHandler(error);
 
       title.removeAttribute("disabled");
       description.removeAttribute("disabled");

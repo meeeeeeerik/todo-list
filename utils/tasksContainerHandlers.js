@@ -1,5 +1,6 @@
 import { deleteTask, getTask, updateTask } from "../api/task.js";
 import { modes, statuses } from "./constants.js";
+import { errorHandler } from "./errorHandler.js";
 import { createModalHtml } from "./htmlTemplates.js";
 import {
   makeTextIfNoTasksInContainer,
@@ -88,7 +89,7 @@ export async function onArchiveTasksContainerClick(event) {
 
       renderNewTask(updatedTask);
     } catch (error) {
-      console.log("error", error);
+      errorHandler(error);
 
       taskContainer.classList.remove("disabled");
     }
@@ -143,7 +144,7 @@ export async function onArchiveTasksContainerClick(event) {
 
         makeTextIfNoTasksInContainer(archiveTasksContainer);
       } catch (error) {
-        console.log("error", error);
+        errorHandler(error);
       }
     };
 

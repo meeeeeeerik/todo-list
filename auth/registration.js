@@ -1,4 +1,5 @@
 import { register } from "../api/user";
+import { errorHandler } from "../utils/errorHandler";
 
 async function onSubmit(event) {
   event.preventDefault();
@@ -40,7 +41,7 @@ async function onSubmit(event) {
     await register(emailValue, passwordValue);
 
     const registrationContentContainer = document.querySelector(
-      "#registrationContentContainer"
+      "#registrationContentContainer",
     );
 
     registrationContentContainer.innerHTML = `
@@ -54,7 +55,7 @@ async function onSubmit(event) {
     confirmPassword.removeAttribute("disabled", "true");
     registrationButton.removeAttribute("disabled", "true");
 
-    console.log("error", error);
+    errorHandler(error);
   }
 }
 
@@ -64,7 +65,7 @@ async function start() {
 
     registrationForm.addEventListener("submit", onSubmit);
   } catch (error) {
-    console.log("error", error);
+    errorHandler(error);
   }
 }
 
