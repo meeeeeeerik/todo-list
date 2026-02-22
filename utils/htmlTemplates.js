@@ -11,9 +11,9 @@ export function createTaskModalHtml(mode = modes.create) {
 
   return `
     <div
-        class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center" id="task-modal-container"
+        class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center px-3" id="task-modal-container"
       >
-        <form id="task-modal" class="w-full max-w-md bg-white p-8 rounded-lg max-h-full relative">
+        <form id="task-modal" class="w-full max-w-md bg-white sm:p-8 py-6 px-5 rounded-lg max-h-full relative">
           ${
             mode === modes.edit
               ? `
@@ -116,8 +116,8 @@ export function createArchiveTaskHtml(archiveTask, isNew = false) {
 
 export function createModalHtml({ title, submitButtonText }) {
   return `
-    <div class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center" data-modal-container>
-      <div class="w-full max-w-md bg-white p-8 rounded-lg max-h-full">
+    <div class="smoothOpen bg-opacity backdrop-blur-sm bg-black fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center px-3" data-modal-container>
+      <div class="w-full max-w-md bg-white px-6 py-4 rounded-lg max-h-full">
         <h2 class="text-lg font-bold text-center mb-6">
           ${title}
         </h2>
