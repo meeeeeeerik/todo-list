@@ -5,7 +5,8 @@ export async function register(email, password) {
     email,
     password,
     options: {
-      emailRedirectTo: "https://meriks-todo-list.netlify.app/auth/login.html",
+      emailRedirectTo:
+        "https://todo-list-project-landing.netlify.app/auth/login.html",
     },
   });
 

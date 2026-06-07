@@ -97,7 +97,6 @@
   animation: closeTask 0.5s ease forwards;
 }
 
-
 .smoothOpen {
   animation: smoothOpen 0.5s ease forwards;
 }
@@ -160,7 +159,7 @@
 
 @keyframes openError {
   0% {
-    transform: translateX(calc(100% +  20px));
+    transform: translateX(calc(100% + 20px));
   }
 
   100% {
