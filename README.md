@@ -2,7 +2,7 @@
 
 A task management web application built with vanilla JavaScript, Supabase, and Tailwind CSS. Users authenticate via Google OAuth and can create, edit, prioritize, and archive their tasks.
 
-**Live demo:** [meriks-to-do-list.netlify.app](https://meriks-to-do-list.netlify.app)
+**Live demo:** [meriks-to-do-list.netlify.app](https://meriks-todo-list.netlify.app/auth/login.html)
 
 ---
 
