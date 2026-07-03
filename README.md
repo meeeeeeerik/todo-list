@@ -2,7 +2,7 @@
 
 A task management web application built with vanilla JavaScript, Supabase, and Tailwind CSS. Users authenticate via Google OAuth and can create, edit, prioritize, and archive their tasks.
 
-**Live demo:** [meriks-to-do-list.netlify.app](https://meriks-todo-list.netlify.app/auth/login.html)
+**Live demo:** [todo-list-project-landing.netlify.app](https://todo-list-project-landing.netlify.app/)
 
 ---
 
@@ -20,13 +20,13 @@ A task management web application built with vanilla JavaScript, Supabase, and T
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Build tool | Vite 5 |
-| Language | Vanilla JavaScript (ES modules) |
-| Styling | Tailwind CSS 3, PostCSS, Autoprefixer |
-| Backend / Auth | Supabase (PostgreSQL + Google OAuth) |
-| Deployment | Netlify |
+| Layer          | Technology                            |
+| -------------- | ------------------------------------- |
+| Build tool     | Vite 5                                |
+| Language       | Vanilla JavaScript (ES modules)       |
+| Styling        | Tailwind CSS 3, PostCSS, Autoprefixer |
+| Backend / Auth | Supabase (PostgreSQL + Google OAuth)  |
+| Deployment     | Netlify                               |
 
 ---
 
@@ -100,11 +100,11 @@ The app will be available at `http://localhost:5173`.
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server with hot reload |
-| `npm run build` | Build for production (outputs to `dist/`) |
-| `npm run preview` | Preview the production build locally |
+| Command           | Description                               |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Start dev server with hot reload          |
+| `npm run build`   | Build for production (outputs to `dist/`) |
+| `npm run preview` | Preview the production build locally      |
 
 ---
 
@@ -122,15 +122,15 @@ The app will be available at `http://localhost:5173`.
 
 The app expects a `tasks` table in Supabase with the following columns:
 
-| Column | Type | Notes |
-|--------|------|-------|
-| `id` | uuid | Primary key |
-| `title` | text | Task title |
-| `description` | text | Optional details |
-| `priority` | text | `high`, `medium`, `low`, or empty |
-| `status` | text | `active` or `archive` |
-| `user_id` | uuid | References `auth.users` |
-| `created_at` | timestamptz | Auto-generated |
+| Column        | Type        | Notes                             |
+| ------------- | ----------- | --------------------------------- |
+| `id`          | uuid        | Primary key                       |
+| `title`       | text        | Task title                        |
+| `description` | text        | Optional details                  |
+| `priority`    | text        | `high`, `medium`, `low`, or empty |
+| `status`      | text        | `active` or `archive`             |
+| `user_id`     | uuid        | References `auth.users`           |
+| `created_at`  | timestamptz | Auto-generated                    |
 
 Enable Row Level Security and add a policy so users can only access their own rows.
 
